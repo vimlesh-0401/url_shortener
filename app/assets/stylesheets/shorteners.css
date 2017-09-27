@@ -37,3 +37,11 @@ input[type=number].input-sm{
   font-size: 50px !important;
   text-align: center !important;
 }
+
+span.author{
+  display: block;
+  position: absolute;
+  right: 37px;
+  font-size: 12px;
+  color: gray;
+}

@@ -37,6 +37,12 @@ class ShortenersController < ApplicationController
     end
   end
 
+  def pages
+    respond_to do |format|
+      format.json {render  json: Shortener.count}
+    end
+  end
+
   def destroy
     @shortener.destroy
     respond_to do |format|

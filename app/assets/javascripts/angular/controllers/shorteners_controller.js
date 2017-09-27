@@ -37,7 +37,7 @@
     }
 
     $scope.rebuildIndex = function(){
-      $http.get('/index/pages.json', {params:{}})
+      $http.get('/shorteners/pages.json', {params:{}})
       .then(function(response) {
         $scope.$broadcast('rebuidPages', response.data);
       });
