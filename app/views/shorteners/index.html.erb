@@ -1,0 +1,95 @@
+
+<section class="content" ng-app="urlShortener">
+  <div class="row">
+    <div class="col-sm-8 col-sm-push-2">
+      <div class="jumbotron">
+        <h1>URL Shortener</h1>
+      </div>
+      <div class="row" ng-controller="ShortenersController">
+        <div class="messages {{msgClass}}" ng-bind='message'>Your message goes here.</div>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-sm-9 col-sm-push-3">
+              <form name="target_gen" class="from-inline" ng-submit="createDilute()">
+                <div class="form-group">
+                  <div class="col-md-7">
+                    <input type="text" class="form-control" name="target" ng-model="shortener.target", placeholder="Paste a link to dilute">
+                  </div>
+                  <div class="col-md-5">
+                    <input type="submit" value="Generate" class="btn btn-primary">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <br/>
+          <table class="table table-striped" >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Target URL</th>
+                <th>Slug</th>
+                <th>Generated URL</th>
+                <th>Hits</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="shortener in shorteners">
+                <td>{{$index+1}}</td>
+                <td ng-bind="shortener.target"></td>
+                <td ng-bind="shortener.dilute"></td>
+                <td><a href="{{shortener.source}}" target="_blank" ng-bind="shortener.source"></a></td>
+                <td ng-bind="shortener.hits"></td>
+                <td>
+                  <a class="btn btn-sm" href ng-click="delete(shortener, $index)">&#x2717;</a>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot ng-controller="PagesController" ng-init="rebuildIndex()">
+              <tr>
+                <td colspan="6">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <input type="number" ng-change="updatePage()" class="form-control input-sm" name="pageSize" ng-model="page.pageSize">
+                    </li>
+                  </ul>
+                  <ul class="pagination pull-right">
+                    <li ng-class="{disabled: !canFirst()}">
+                      <a class="page-link" ng-click="firstPage()" href aria-label="Previous">
+                        <span aria-hidden="true">&laquo;&laquo;</span>
+                        <span class="sr-only">First</span>
+                      </a>
+                    </li>
+                    <li ng-class="{disabled: !canPrev()}">
+                      <a class="page-link" ng-click="prevPage()" href aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    <li class="page-item {{isActive(x, true)}}" ng-repeat="x in page.pages">
+                      <a class="page-link" ng-click="setActive(x)" href>{{x}}</a>
+                    </li>
+                    <li ng-class="{disabled: !canNext()}">
+                      <a class="page-link" ng-click="nextPage()" href aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                    <li ng-class="{disabled: !canLast()}">
+                      <a class="page-link" ng-click="lastPage()" href aria-label="Next">
+                        <span aria-hidden="true">&raquo;&raquo;</span>
+                        <span class="sr-only">Last</span>
+                      </a>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--  -->

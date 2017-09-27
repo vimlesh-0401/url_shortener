@@ -1,0 +1,39 @@
+.btn.btn-sm{
+  padding: 1px !important;
+}
+td:last-child{
+  padding: 3px 8px !important;
+  width: 58px !important;
+}
+
+td:last-child>a{
+  font-size: 16px;
+}
+td>a:hover, td>a:visited, td>a:focus, td>a:active{
+  text-decoration: none;
+}
+.messages{
+  position: relative;
+  margin-top: -25px;
+  text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+input[type=number].input-sm{
+  width: 50px;
+}
+
+.jumbotron{
+  padding: 20px 60px 30px 60px !important;
+}
+.jumbotron>h1{
+  padding: 0px !important;
+  font-size: 50px !important;
+  text-align: center !important;
+}
