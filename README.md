@@ -5,7 +5,7 @@
  ### What you need
   * ruby 2.3.3
   * rails 5.1.4
-  * postgresql  0.18
+  * postgresql  9.3.15
 
   ### Additional GEMS
  ```
